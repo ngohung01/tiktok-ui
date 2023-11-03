@@ -111,6 +111,11 @@
         left: -3px;
     }
 }
+// Action
+.action {
+    display: flex;
+    align-items: center;
+}
 
 .more-btn {
     font-size: 2rem;
@@ -119,3 +124,26 @@
     background-color: transparent;
     cursor: pointer;
 }
+.action-btn {
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    font-size: 2.2rem;
+    margin-left: 16px;
+    cursor: pointer;
+}
+.action-icon {
+    position: relative;
+    top: 3px;
+}
+// User
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    margin-left: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+// Tool tips

@@ -36,3 +36,23 @@ a[href] {
     text-decoration: none;
     color: var(--text-color);
 }
+
+// Tools tips 
+body {
+    .tippy-box {
+        // height: 37px;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-content {
+        padding: 8px 9px;
+        font-size: 1.6rem;
+        line-height: 21px;
+        color: rgb(255, 255, 255);
+    }
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-box[data-placement^=bottom]>.tippy-arrow:before {
+        top: -8px;
+    }
+}
