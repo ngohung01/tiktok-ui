@@ -12,6 +12,8 @@ import { Wrapper as PopperWraper } from '~/components/Popper';
 
 // Import custom hook
 import { useDebounce } from '~/hooks';
+//import api
+import * as searchService from '~/services';
 
 const cx = classNames.bind(styles);
 
@@ -24,34 +26,28 @@ function Search() {
 
     const inRef = useRef();
 
-    const debounceSearch = useDebounce(searchValue,700);
+    const debounceSearch = useDebounce(searchValue, 700);
 
     useEffect(() => {
         let ignore = false;
-        if(!debounceSearch.trim()) {
-            setSearchResult([])
+        if (!debounceSearch.trim()) {
+            setSearchResult([]);
             return;
         }
-        setIsLoading(true);
         async function fetchAPI() {
-            await fetch(
-                `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounceSearch)}&type=less`,
-            )
-                .then((response) => response.json())
-                .then((response) => {
-                    // console.log(response);
-                    if(!ignore) {
-                        setSearchResult(response.data);
-                        setIsLoading(false);
-                    }
-                });
+            setIsLoading(true);
+            const res = await searchService.search(debounceSearch);
+            if (!ignore) {
+                setSearchResult(res.data);
+                setIsLoading(false);
+            }
         }
-        fetchAPI()
+        fetchAPI();
         return () => {
             ignore = true;
-        }
+        };
     }, [debounceSearch]);
-    
+
     // Handle events
     const handleClear = () => {
         setSearchValue('');
@@ -67,7 +63,7 @@ function Search() {
             // disabled
             // hideOnClick
             interactive
-            visible={isShowResult && searchResult.length > 0}
+            visible={isShowResult && searchResult.length}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex={-1} {...attrs}>
                     <PopperWraper>
