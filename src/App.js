@@ -19,7 +19,7 @@ function App() {
                                     key={index}
                                     path={router.path}
                                     element={
-                                        <Layout>{router.ReactElement}</Layout>
+                                        <Layout>{router.component}</Layout>
                                     }
                                 />
                             );

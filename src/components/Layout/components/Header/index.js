@@ -1,38 +1,36 @@
+import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
 import {
     faArrowRightFromBracket,
-    faCloudUpload,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
     faGear,
-    faMagnifyingGlass,
-    faSpinner,
-    faXmarkCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
-import { useEffect, useState } from 'react';
-
-import images from '~/assets/images';
-import 'tippy.js/dist/tippy.css';
-import styles from './Header.module.scss';
-
-import Button from '~/components/Button';
-import Menu from '~/components/Popper/Menu';
-import AccountItem from '~/components/AccountItem';
-import { Wrapper as PopperWraper } from '~/components/Popper';
 import {
     faBookmark,
     faCircleQuestion,
     faKeyboard,
-    faMessage,
     faUser,
 } from '@fortawesome/free-regular-svg-icons';
-const cx = classNames.bind(styles);
 
-const currentUser = true;
+import Search from '../Search';
+import Image from '~/components/Image';
+import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
+import {
+    InBoxIcon,
+    MessageIcon,
+    UpLoadIcon,
+} from '~/components/Icons';
+
+import images from '~/assets/images';
+import styles from './Header.module.scss';
+
+const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
@@ -93,7 +91,7 @@ const MENU_ITEMS = [
     },
 ];
 
-const USER_MENU_ITEMS = currentUser && [
+const USER_MENU_ITEMS =[
     {
         icon: <FontAwesomeIcon icon={faUser} />,
         title: 'View Profile',
@@ -133,12 +131,8 @@ function handleChangeMenu(menuItem) {
     console.log(menuItem);
 }
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1]);
-        }, 0);
-    }, []);
+    const currentUser = true;
+    
     return (
         <div className={cx('wrapper')}>
             <div className={cx('content')}>
@@ -148,61 +142,28 @@ function Header() {
                 </div>
 
                 {/* Search */}
-                <HeadlessTippy
-                    // disabled
-                    // hideOnClick
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div
-                            className={cx('search-result')}
-                            tabIndex={-1}
-                            {...attrs}
-                        >
-                            <PopperWraper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWraper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input
-                            placeholder="Search accounts and videos"
-                            spellCheck={false}
-                        ></input>
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faXmarkCircle} />
-                        </button>
-                        <button className={cx('loading')}>
-                            <FontAwesomeIcon icon={faSpinner} />
-                        </button>
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search/>
                 {/* Action */}
                 <div className={cx('action')}>
                     {currentUser ? (
                         <>
                             <Tippy content="Upload" delay={[0, 100]}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon
+                                    <UpLoadIcon className={cx('action-icon')} />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Messages" delay={[0, 100]}>
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon
                                         className={cx('action-icon')}
-                                        icon={faCloudUpload}
                                     />
                                 </button>
                             </Tippy>
-                            <Tippy content="Message" delay={[0, 100]}>
+                            <Tippy content="Inbox" delay={[0, 100]}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon
-                                        className={cx('action-icon')}
-                                        icon={faMessage}
-                                    />
+                                    <InBoxIcon className={cx('action-icon')} />
+                                    {/* Badge : huy hiệu */}
+                                    <span className={cx('badge')}>10</span>
                                 </button>
                             </Tippy>
                         </>
@@ -219,10 +180,11 @@ function Header() {
                                 isUser
                                 onChange={handleChangeMenu}
                             >
-                                <img
-                                    src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/eadc8a9fd333365d5973abdf7b9a219a~c5_300x300.webp?x-expires=1698850800&x-signature=Lf3ziMLRUzV%2FIikao4SMdAUrG9M%3D"
+                                <Image
+                                    src="shttps://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/eadc8a9fd333365d5973abdf7b9a219a~c5_300x300.webp?x-expires=1698850800&x-signature=Lf3ziMLRUzV%2FIikao4SMdAUrG9M%3D"
                                     alt="anhngoc0411"
                                     className={cx('user-avatar')}
+                                    fallback="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/e377f27d3c3ffcc7b180cf2b318c638c~c5_720x720.jpeg?x-expires=1699153200&x-signature=u0Z%2F5lpqDIy9W8DIlPp6dTkpXdU%3D"
                                 />
                             </Menu>
                         </>
