@@ -42,10 +42,10 @@ function Menu({ items = [], children, isUser, onChange = defaultF }) {
         <Tippy
             // disabled
             // hideOnClick
+            // visible  
             placement="bottom-end"
             interactive
             delay={[0, 600]}
-            // visible
             offset={isUser ? [-5, 20] : [0, 20]}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex={-1} {...attrs}>
@@ -60,7 +60,9 @@ function Menu({ items = [], children, isUser, onChange = defaultF }) {
                                 }
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>
+                            {renderItems()}
+                        </div>
                     </PopperWraper>
                 </div>
             )}

@@ -1,12 +1,11 @@
 .wrapper {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-height: min((100vh - 96px) - 60px, 734px);
+    min-height: 100px;
     padding-top: 8px;
     border-radius: 8px;
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 12px;
-    // box-shadow: inset 0px 0px 1px 0px rgb(0, 0, 0,0.5);
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    min-height: 100px;
 }

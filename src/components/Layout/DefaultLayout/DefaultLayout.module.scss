@@ -1,13 +1,14 @@
 .wrapper{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
 }
 
 .container{
-    width: var(--default-layout-width);
     display: flex;
+    width: var(--default-layout-width);
+    margin-top: var(--default-layout-header-height);
 }
 
 .content{

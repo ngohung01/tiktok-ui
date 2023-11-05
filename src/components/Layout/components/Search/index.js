@@ -65,53 +65,57 @@ function Search() {
             setSearchValue(valueSearch)
     }
     return (
-        <HeadlessTippy
-            // disabled
-            // hideOnClick
-            interactive
-            visible={isShowResult && searchResult.length}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex={-1} {...attrs}>
-                    <PopperWraper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResult.map((data) => (
-                            <AccountItem key={data.id} data={data} />
-                        ))}
-                        {/* <AccountItem />
-                        <AccountItem />
-                        <AccountItem /> */}
-                    </PopperWraper>
+        // Using a wrapper <div> tag around the reference 
+        // element solves this by creating a new parentNode context
+        <div>
+            <HeadlessTippy
+                // disabled
+                // hideOnClick
+                interactive
+                visible={isShowResult && searchResult.length}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex={-1} {...attrs}>
+                        <PopperWraper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {searchResult.map((data) => (
+                                <AccountItem key={data.id} data={data} />
+                            ))}
+                            {/* <AccountItem />
+                            <AccountItem />
+                            <AccountItem /> */}
+                        </PopperWraper>
+                    </div>
+                )}
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inRef}
+                        placeholder="Search accounts and videos"
+                        spellCheck={false}
+                        value={searchValue}
+                        onChange={handleSearch}
+                        onFocus={() => setIsShowResult(true)}
+                    />
+                    {searchValue && !isLoading && (
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faXmarkCircle} />
+                        </button>
+                    )}
+                    {isLoading && (
+                        <button className={cx('loading')}>
+                            <FontAwesomeIcon icon={faSpinner} />
+                        </button>
+                    )}
+                    <button 
+                        className={cx('search-btn')}
+                        onMouseDown={e => e.preventDefault()} // Behaviour for mouse down click
+                    >
+                        <SearchIcon />
+                    </button>
                 </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inRef}
-                    placeholder="Search accounts and videos"
-                    spellCheck={false}
-                    value={searchValue}
-                    onChange={handleSearch}
-                    onFocus={() => setIsShowResult(true)}
-                />
-                {searchValue && !isLoading && (
-                    <button className={cx('clear')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faXmarkCircle} />
-                    </button>
-                )}
-                {isLoading && (
-                    <button className={cx('loading')}>
-                        <FontAwesomeIcon icon={faSpinner} />
-                    </button>
-                )}
-                <button 
-                    className={cx('search-btn')}
-                    onMouseDown={e => e.preventDefault()} // Behaviour for mouse down click
-                >
-                    <SearchIcon />
-                </button>
-            </div>
-        </HeadlessTippy>
+            </HeadlessTippy>
+        </div>
     );
 }
 
