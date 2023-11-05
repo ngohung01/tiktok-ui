@@ -1,4 +1,5 @@
 import Tippy from '@tippyjs/react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import 'tippy.js/dist/tippy.css';
@@ -29,7 +30,8 @@ import {
 
 import images from '~/assets/images';
 import styles from './Header.module.scss';
-
+// config routes 
+import {routes as routesConfig} from '~/configs'
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -137,9 +139,9 @@ function Header() {
         <div className={cx('wrapper')}>
             <div className={cx('content')}>
                 {/* Logo */}
-                <div className={cx('logo')}>
+                <Link to={routesConfig.root} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
-                </div>
+                </Link>
 
                 {/* Search */}
                 <Search/>

@@ -1,3 +1,4 @@
+import {routes as routesConfig} from '~/configs';
 //Pages
 import {
     HomePage,
@@ -12,11 +13,11 @@ import { OnlyHeader } from '~/components/Layout';
 
 // Route Public -- dành cho Customer không cần đăng nhập tài khoản vẫn có thể xem
 const publicRouter = [
-    { path: '/', component: <HomePage /> },
-    { path: '/following', component: <FollowingPage /> },
-    { path: '/:nickname', component: <ProfilePage /> },
-    { path: '/upload', component: <UploadPage /> , layout: OnlyHeader },
-    { path: '/search', component: <SearchPage />, layout: null },
+    { path: routesConfig.root, component: <HomePage /> },
+    { path: routesConfig.following, component: <FollowingPage /> },
+    { path: routesConfig.profile, component: <ProfilePage /> },
+    { path: routesConfig.upload, component: <UploadPage /> , layout: OnlyHeader },
+    { path: routesConfig.search, component: <SearchPage />, layout: null },
 ];
 
 // Route Private -- dành cho User  cần đăng nhập tài khoản mới có thể xem
