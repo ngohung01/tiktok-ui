@@ -9,7 +9,7 @@ import {
 } from '~/pages';
 
 //Layouts
-import { OnlyHeader } from '~/components/Layout';
+import { OnlyHeader } from '~/layout';
 
 // Route Public -- dành cho Customer không cần đăng nhập tài khoản vẫn có thể xem
 const publicRouter = [

@@ -1,9 +1,9 @@
-import classNames from 'classnames/bind'
-import styles from './DefaultLayout.module.scss'
-import { Header } from "~/components/Layout/components";
+import classNames from 'classnames/bind';
+import styles from './DefaultLayout.module.scss';
+import { Header } from '~/layout/components';
 import Sidebar from './Sidebar';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 function DefaultLayout({ children }) {
     return (
         <div className={cx('wrapper')}>
