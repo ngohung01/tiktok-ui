@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 
@@ -73,4 +74,10 @@ function Menu({ items = [], children, isUser, onChange = defaultF }) {
     );
 }
 
+Menu.propTypes = {
+    items : PropTypes.array,
+    children : PropTypes.node.isRequired,
+    isUser : PropTypes.bool,
+    onChange : PropTypes.func,
+}
 export default Menu;
