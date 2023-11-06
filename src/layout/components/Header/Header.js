@@ -239,7 +239,7 @@ function handleChangeMenu(menuItem) {
     console.log(menuItem);
 }
 function Header() {
-    const currentUser = false;
+    const currentUser = true;
 
     return (
         <div className={cx('wrapper')}>

@@ -11,7 +11,7 @@ import { Wrapper as PopperWraper } from '~/components/Popper';
 const cx = classNames.bind(styles);
 
 const defaultF = () => {};
-function Menu({ items = [], children, isUser, onChange = defaultF }) {
+function Menu({ items = [], children, isUser,hideOnClick=false, onChange = defaultF }) {
     const [history, setHistory] = useState([{ data: items }]);
     const historyLength = history.length;
     const historySelected = history[historyLength - 1];
@@ -50,8 +50,8 @@ function Menu({ items = [], children, isUser, onChange = defaultF }) {
     return (
         <Tippy
             // disabled
-            // hideOnClick
             // visible
+            hideOnClick={hideOnClick}
             placement="bottom-end"
             interactive
             delay={[0, 600]}
@@ -80,6 +80,7 @@ Menu.propTypes = {
     items: PropTypes.array,
     children: PropTypes.node.isRequired,
     isUser: PropTypes.bool,
+    hideOnClick: PropTypes.bool,
     onChange: PropTypes.func,
 };
 export default Menu;
