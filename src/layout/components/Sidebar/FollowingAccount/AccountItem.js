@@ -9,21 +9,22 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function AccountItem({ className, data }) {
+    const fullName = data['first_name'] + ' ' + data['last_name']
     return (
         <Link to={`/${data.nickname}`} className={cx('account-item', className)}>
             <img
                 src={data.avatar}
-                alt={data.full_name}
+                alt={data.nickname}
                 className={cx('account-avt')}
             />
             <div className={cx('account-info')}>
                 <h4 className={cx('full-name')}>
-                    {data.full_name}
+                    {data.nickname}
                     <span className={cx('account-tick')}>
                         {data.tick && <FontAwesomeIcon icon={faCheckCircle} />}
                     </span>
                 </h4>
-                <p className={cx('nick-name')}>{data.nickname}</p>
+                <p className={cx('nick-name')}>{fullName}</p>
             </div>
         </Link>
     );

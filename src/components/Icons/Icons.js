@@ -232,6 +232,18 @@ const LiveActiveIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
     );
 };
 
+const IconEffect = ({className,width='1.9rem',height='1.9rem'}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        fill="currentColor"
+        // viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <use xlinkHref="#eh-logo-a5ac4daf"></use>
+    </svg>
+);
 export {
     UpLoadIcon,
     InBoxIcon,
@@ -245,4 +257,5 @@ export {
     ExploreActiveIcon,
     LiveIcon,
     LiveActiveIcon,
+    IconEffect,
 };
