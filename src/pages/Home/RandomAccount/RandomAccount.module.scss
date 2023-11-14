@@ -1,0 +1,107 @@
+.wrapper {
+    padding: 20px 0;
+}
+
+.account-item {
+    display: flex;
+}
+
+.account-avt {
+    width: 56px;
+    height: 56px;
+}
+.account-avt img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.content {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.header-content {
+    display: flex;
+}
+
+.account-info {
+    flex: 1;
+    padding-right: 16px;
+}
+
+.author-text {
+    display: inline-flex;
+}
+
+.nick-name {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    margin-right: 4px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.full-name {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.8rem;
+}
+
+.style-links strong {
+    font-weight: 600;
+    color: #2b5db9;
+}
+
+.music-wrapper , .anchor-wrapper {
+    display: flex;
+    align-items: center;
+}
+.music-wrapper {
+    margin: 2px 0 0 2px;
+    padding-left: 2px;
+}
+.icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+}
+
+.music-icon {
+}
+
+.music-text ,.anchor-text {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    font-weight: 400;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+.anchor-wrapper {
+    margin-top: 2px;
+    padding: 1px 6px 1px 4px;
+}
+
+.anchor-icon {
+}
+
+.anchor-text {
+
+}
+
+// CommonLink
+.common-link {
+    margin-right: 4px;
+
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: #2b5db9;
+    }
+}
