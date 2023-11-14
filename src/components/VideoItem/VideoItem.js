@@ -55,7 +55,7 @@ function VideoItem() {
                 <video
                     ref={videoRef}
                     src="https://files.fullstack.edu.vn/f8-tiktok/videos/3177-654b9e6dc23d4.mp4"
-
+                    
                     // controls
                 ></video>
                 <div className={cx('controls')} tabIndex={0}>

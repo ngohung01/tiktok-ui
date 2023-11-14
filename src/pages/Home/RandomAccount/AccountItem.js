@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAnchor, faMusic } from '@fortawesome/free-solid-svg-icons';
 
+import CommonLink from './CommonLink';
+import Image from '~/components/Image';
 import Button from '~/components/Button';
 import VideoItem from '~/components/VideoItem';
 
 import styles from './RandomAccount.module.scss';
-import CommonLink from './CommonLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnchor, faMusic } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ function AccountItem() {
     return (
         <div className={cx('account-item')}>
             <Link to="/tom_and_jerry287" className={cx('account-avt')}>
-                <img
+                <Image
                     src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/b83015f34e14ce7735c2d8c3bda97755~c5_100x100.jpeg?x-expires=1699668000&x-signature=eyOnkPA%2FODpy2lU3DYhMW8mjTOk%3D"
                     alt="tom_and_jerry287"
                 />
