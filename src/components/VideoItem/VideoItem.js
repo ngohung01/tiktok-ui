@@ -6,12 +6,12 @@ import { PlayIcon, PauseIcon, VolumeIcon, MuteIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
-function VideoItem() {
+function VideoItem({data}) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMute, setIsMute] = useState(true);
     const [progess, setProgess] = useState(0);
     const translateControlCircleY = progess * 36; // controls circle có thể tịnh tiến max là 36px
-
+    
     const videoRef = useRef(null);
     const progessRef = useRef(null);
     useEffect(() => {
@@ -78,8 +78,7 @@ function VideoItem() {
             <div className={cx('video-card')}>
                 <video
                     ref={videoRef}
-                    src="https://files.fullstack.edu.vn/f8-tiktok/videos/3177-654b9e6dc23d4.mp4"
-                    
+                    src={data || "https://files.fullstack.edu.vn/f8-tiktok/videos/3177-654b9e6dc23d4.mp4"}
                     // controls
                 ></video>
                 <div className={cx('controls')} tabIndex={0}>

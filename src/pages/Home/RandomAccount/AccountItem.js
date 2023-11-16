@@ -13,13 +13,17 @@ import styles from './RandomAccount.module.scss';
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({data}) {
+    console.log(data)
+    const musicAuthor = data.popular_video.music;
+    const videoDesc = data.popular_video.description;
     return (
         <div className={cx('account-item')}>
-            <Link to="/tom_and_jerry287" className={cx('account-avt')}>
+            <Link to={`/${data.nickname}`} className={cx('account-avt')}>
                 <Image
-                    src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/b83015f34e14ce7735c2d8c3bda97755~c5_100x100.jpeg?x-expires=1699668000&x-signature=eyOnkPA%2FODpy2lU3DYhMW8mjTOk%3D"
-                    alt="tom_and_jerry287"
+                    // src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/b83015f34e14ce7735c2d8c3bda97755~c5_100x100.jpeg?x-expires=1699668000&x-signature=eyOnkPA%2FODpy2lU3DYhMW8mjTOk%3D"
+                    src={data.avatar}
+                    alt={data.nickname}
                 />
             </Link>
             <div className={cx('content')}>
@@ -28,13 +32,16 @@ function AccountItem() {
                         <div>
                             <Link className={cx('author-text')}>
                                 <h3 className={cx('nick-name')}>
-                                    tom_and_jerry287
+                                   {data.nickname}
                                 </h3>
                                 <h4 className={cx('full-name')}>
-                                    tom_and_jerry287
+                                    {`${data.first_name} ${data.last_name}`}
                                 </h4>
                             </Link>
                         </div>
+                        {/* Description */}
+                        {videoDesc &&  <div className={cx('video-desc')}>{ videoDesc}</div>}
+                        {/*  */}
                         <div className={cx('style-links')}>
                             <CommonLink title="#foodie" />
                             <CommonLink title="#foodies" />
@@ -52,7 +59,7 @@ function AccountItem() {
                                 className={cx('music-icon', 'icon')}
                             />
                             <p className={cx('music-text')}>
-                                original sound - Audra Higbie
+                                {musicAuthor || 'original-sound'}
                             </p>
                         </Link>
                         <Link
@@ -72,7 +79,7 @@ function AccountItem() {
                 </div>
 
                 {/* Video Item */}
-                <VideoItem/>
+                <VideoItem data={data.popular_video.file_url}/>
                 {/* <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
                         <video
