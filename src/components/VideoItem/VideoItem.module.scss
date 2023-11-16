@@ -63,6 +63,11 @@
             display: flex;
         }
     }
+    &:focus-within {
+        .volume-control {
+            display: flex;
+        }
+    }
 }
 
 .video-sound {
@@ -89,6 +94,7 @@
     margin: 8px 7px 0;
     background-color: #16182357;
     border-radius: 32px;
+    cursor: default;
 }
 
 .control-progess {
@@ -107,6 +113,7 @@
     width: 12px;
     height: 12px;
     border-radius: 12px;
+    cursor: pointer;
 }
 .control-progess , .control-baret {
     position: absolute;

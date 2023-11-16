@@ -8,13 +8,12 @@ const cx = classNames.bind(styles);
 
 function VideoItem() {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isMute, setIsMute] = useState(false);
+    const [isMute, setIsMute] = useState(true);
     const [progess, setProgess] = useState(0);
     const translateControlCircleY = progess * 36; // controls circle có thể tịnh tiến max là 36px
 
     const videoRef = useRef(null);
-    const baretRef = useRef(null);
-
+    const progessRef = useRef(null);
     useEffect(() => {
         if (isPlaying) {
             videoRef.current.play();
@@ -25,30 +24,55 @@ function VideoItem() {
 
     useEffect(() => {
         videoRef.current.volume = progess ;
+        if(progess===0) {
+            setIsMute(true);
+        }else {
+            setIsMute(false);
+        }
     }, [progess]);
     const handlePlayVideo = () => {
         setIsPlaying(!isPlaying);
     };
     const handleMute = () => {
         setIsMute(!isMute);
+        if(isMute) {
+            setProgess(1)
+        } else setProgess(0)
+    };
+
+    const progessCal = (e) => {
+        const infoRect = progessRef.current.getBoundingClientRect();
+
+        const subtraction = infoRect.bottom - e.clientY;
+        if (subtraction >= 48) {
+            return 1;
+        } else if (subtraction > 0 && subtraction < 48) {
+            return subtraction / 48;
+        }else if(subtraction <= 0) {
+            return 0;
+        }
     };
 
     const handleControlVolume = (e) => {
-        const infoRect = e.target.getBoundingClientRect();
-
-        const progessCal = () => {
-            const subtraction = infoRect.bottom - e.clientY;
-            if (subtraction >= 48) {
-                return 1;
-            } else if (subtraction > 0 && subtraction < 48)
-                return subtraction / 48;
-        };
-
-        const newProgess = progessCal();
-        console.log(e.target,infoRect,newProgess);
+        const newProgess = progessCal(e);
+        // console.log(progessRef.current,newProgess);
         setProgess(newProgess);
-        // console.log(e.target,infoRect);
     };
+    const handleMouseDownCircle = (e) => {
+        e.preventDefault();
+        e.target.focus();
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+
+        function handleMouseMove(e) {
+            // console.log(e.clientY)
+            const newProgess = progessCal(e);
+            setProgess(newProgess);
+        }
+        function handleMouseUp() {
+            document.removeEventListener('mousemove', handleMouseMove);
+        }
+    }
     return (
         <div className={cx('video-wrapper')}>
             <div className={cx('video-card')}>
@@ -65,14 +89,14 @@ function VideoItem() {
                     >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </span>
-                    <div className={cx('voice-control')}>
+                    <div className={cx('voice-control')} tabIndex={0} >
                         <div className={cx('volume-control')}>
                             <div
+                                ref={progessRef}
                                 className={cx('control-progess')}
                                 onClick={(e) => handleControlVolume(e)}
                             ></div>
                             <div
-                                ref={baretRef}
                                 className={cx('control-baret')}
                                 style={{
                                     transform: `scaleY(${progess})`,
@@ -86,6 +110,8 @@ function VideoItem() {
                                 style={{
                                     transform: `translateY(-${translateControlCircleY}px)`,
                                 }}
+                                onMouseDown={handleMouseDownCircle}
+                                tabIndex={0}
                             ></div>
                         </div>
                         <div className={cx('video-sound')} onClick={handleMute}>
