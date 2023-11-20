@@ -14,7 +14,7 @@ import styles from './RandomAccount.module.scss';
 const cx = classNames.bind(styles);
 
 function AccountItem({data}) {
-    console.log(data)
+    // console.log(data)
     const musicAuthor = data.popular_video.music;
     const videoDesc = data.popular_video.description;
     return (
@@ -80,19 +80,7 @@ function AccountItem({data}) {
 
                 {/* Video Item */}
                 <VideoItem data={data.popular_video.file_url}/>
-                {/* <div className={cx('video-wrapper')}>
-                    <div className={cx('video-card')}>
-                        <video
-                            width={'100%'}
-                            height={'100%'}
-                            preload="auto"
-                            src='https://files.fullstack.edu.vn/f8-tiktok/videos/3177-654b9e6dc23d4.mp4'
-                            // controls
-                        >
-                        </video>
-
-                    </div>
-                </div> */}
+                
             </div>
         </div>
     );

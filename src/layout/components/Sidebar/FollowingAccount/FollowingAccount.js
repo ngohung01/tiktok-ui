@@ -37,7 +37,7 @@ function FollowingAccount({ title }) {
     const handleSeeMore = () => {
        setPageFollowing(pageFollowing+1)
     }
-    console.log(followingUsers)
+    // console.log(followingUsers)
     return (
         <section className={cx('following-accounts')}>
             <div className={cx('title')}>Following accounts</div>

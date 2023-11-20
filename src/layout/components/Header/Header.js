@@ -59,116 +59,6 @@ const MENU_ITEMS = [
                                 code: 'vi',
                                 title: 'Tiếng Việt 1 Xử lý thanh cuộn trong menu đa cấp, khi có nhiều content -> OK',
                             },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'en',
-                                title: 'English 1',
-                            },
-                            {
-                                type: 'language',
-                                code: 'vi',
-                                title: 'Tiếng Việt 1',
-                            },
                         ],
                     },
                 },
@@ -239,7 +129,7 @@ function handleChangeMenu(menuItem) {
     console.log(menuItem);
 }
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     return (
         <div className={cx('wrapper')}>

@@ -5,6 +5,7 @@
     --height-video-default : 518px;
     --height-baret-default : 30px;
     display: flex;
+    align-items: flex-end;
     margin-top: 16px;
 }
 
@@ -14,6 +15,7 @@
     height: var(--height-video-default);
     background-color: #1618230f;
     border-radius: 8px;
+    margin-right: 20px;
     overflow: hidden;
     cursor: pointer; 
     video {
@@ -30,6 +32,15 @@
     }
     
 }
+
+.auto-play-video {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+}
+
 .controls {
     display: none;
     animation: easeView .3s ease 0s ;
@@ -125,6 +136,47 @@
 }
 .control-baret , .control-circle {
     background-color: #fff;
+}
+
+// Video - action - items
+
+.action-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-action {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0px;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    width: 48px;
+    height: 48px;
+    margin: 8px 0 6px;
+    background-color: #1618230f;
+    font-size: 0rem;
+    border-radius: 50%;
+    transition: all 200ms ease-in-out 0s;
+}
+
+.strong-text {
+    color: #161823bf;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: center;
 }
 
 // set keyframes
