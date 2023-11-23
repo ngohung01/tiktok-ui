@@ -154,7 +154,6 @@
     display: flex;
     -webkit-box-align: center;
     align-items: center;
-    cursor: pointer;
     flex-direction: column
 }
 
@@ -170,6 +169,7 @@
     font-size: 0rem;
     border-radius: 50%;
     transition: all 200ms ease-in-out 0s;
+    cursor: pointer;
 }
 
 .strong-text {

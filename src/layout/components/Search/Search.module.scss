@@ -66,16 +66,16 @@
     color: rgba(22, 24, 35, 0.34);
 }
 .loading {
-    animation: spindle 0.8s linear infinite;
+    animation: var(--spindleAnimation)
 }
-@keyframes spindle {
-    0% {
-        transform: translateY(-50%) rotate(0);
-    }
-    100% {
-        transform: translateY(-50%) rotate(360deg);
-    }
-}
+// @keyframes spindle {
+//     0% {
+//         transform: translateY(-50%) rotate(0);
+//     }
+//     100% {
+//         transform: translateY(-50%) rotate(360deg);
+//     }
+// }
 .search-btn {
     pointer-events: auto;
     width: var(--search-button-width);

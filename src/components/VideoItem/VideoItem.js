@@ -17,10 +17,13 @@ function VideoItem({data}) {
     const videoRef = useRef(null);
     const progessRef = useRef(null);
     const buttonRef = useRef(null);
+    console.log('==================Videoitem rerender =================')
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
+            // console.log(entries)
             const entry = entries[0];
-            console.log(entry)
+            // entries.map(entry => { console.log(entry);setIsVideoVisible(entry.isIntersecting)})
+            // console.log(entry)
             setIsVideoVisible(entry.isIntersecting)
         })
 

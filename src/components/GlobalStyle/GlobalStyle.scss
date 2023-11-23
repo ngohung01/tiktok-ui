@@ -8,6 +8,9 @@
     //Default Layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
+
+    --spindleAnimation: spindle 0.8s linear infinite;
+
 }
 
 html {
@@ -25,7 +28,9 @@ body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     overflow-y: overlay;
-
+}
+.hidden {
+    overflow: hidden;
 }
 
 // Scrollbar
@@ -106,5 +111,14 @@ body {
     }
     .tippy-box[data-placement^=bottom]>.tippy-arrow:before {
         top: -8px;
+    }
+}
+
+@keyframes spindle {
+    0% {
+        transform: translateY(-50%) rotate(0);
+    }
+    100% {
+        transform: translateY(-50%) rotate(360deg);
     }
 }
