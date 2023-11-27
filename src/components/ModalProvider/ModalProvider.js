@@ -5,15 +5,27 @@ export const ModalContext = createContext(null)
 function ModalProvider({children}) {
     const [isOpen,setIsOpen] = useState(false);
     const [typeForm,setTypeForm] = useState('login-list');
+    const [relateForm,setRelateForm] = useState('login-register');
 
     const body = document.querySelector('body');
     
-    const handleOpenModal = () => {
+    const handleOpenModal = (modal='') => {
         setIsOpen(true)
+        switch(modal) {
+            case 'login-register':
+                setTypeForm('login-list')
+                setRelateForm('login-register');
+                break;
+            case 'logout':
+                setRelateForm('logout');
+                break;
+            default:
+                console.log('error set modal type')
+                break;
+        }
         body.classList.add('hidden');
     }
     const handleCloseModal = () => {
-        setTypeForm('login-list')
         setIsOpen(false)
         body.classList.remove('hidden');
     }
@@ -21,7 +33,9 @@ function ModalProvider({children}) {
     const value ={
         isOpen,
         typeForm,
+        relateForm,
         setTypeForm,
+        setRelateForm,
         handleOpenModal,
         handleCloseModal,
     }

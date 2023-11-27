@@ -12,7 +12,6 @@ function LoginProvider({ children }) {
     const [isError,setIsError] = useState(false);
 
     const {handleCloseModal} = useContext(ModalContext);
-
     const fetchApi = async (email,password) => {
         setIsLoading(true);
         setIsError(false);
@@ -21,22 +20,31 @@ function LoginProvider({ children }) {
         if(res) {
             setData(res.data)
             localStorage.setItem('token',res.meta.token);
-
-            setTimeout(() => {
-                setIsLoading(false)
-                handleCloseModal()
-            },2500)
+            setIsLoading(false)
+            handleCloseModal()
+            // setTimeout(() => {
+            // },2500)
         }else {
             setIsLoading(false);
             setIsError(true);
         }
+    }
+
+    const handleDeleteData = () => {
+        setData(null)
+    }
+
+    const handleSetData = (data) => {
+        setData(data)
     }
     const value = {
         data,
         isLoading,
         isError,
         fetchApi,
-        setIsError
+        setIsError,
+        handleSetData,
+        handleDeleteData
     };
     return <LoginContext.Provider value={value}>{children}</LoginContext.Provider>;
 }
